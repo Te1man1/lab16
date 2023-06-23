@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>equipment</title>
+</head>
+<body>
+{% block title %}
+  {% if form.instance.pk %}
+    Update equipment "{{ form.instance.equipment.get_equipment }}"
+  {% else %}
+    Create New equipment
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-12">
+      <h1>{{ title }}</h1>
+      <hr>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary" value="Save">
+        <a href="{% url 'equipment_list' %}" class="btn btn-default">Cancel</a>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+</body>
+</html>

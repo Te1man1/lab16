@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block title %}User Profiles{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-12">
+      <h1>User Profiles</h1>
+      <hr>
+      <p><a href="{% url 'user_profile_create' %}" class="btn btn-primary">Create/edit Profile</a></p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>User</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for profile in profiles %}
+            <tr>
+              <td>{{ profile.user.get_full_name }}</td>
+
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="4">No profiles found.</td>
+            </tr>
+          {% endfor %}
+
+{% endblock %}
+
+</body>
+</html>

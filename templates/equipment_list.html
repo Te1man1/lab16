@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block title %}equipment{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-12">
+      <h1>equipment list</h1>
+      <hr>
+      <p><a href="{% url 'equipment_create' %}" class="btn btn-primary">Create/edit equipment</a></p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>equipment</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for equipment in equipments %}
+            <tr>
+              <td>{{ equipment.get_equipment }}</td>
+
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="4">No equipment found.</td>
+            </tr>
+          {% endfor %}
+
+{% endblock %}
+
+</body>
+</html>
